@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#322929"
     tools:context=".Tickets">
 
-    <!-- Este sera el fragmente donde apareceran tus eventos -->
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
-        android:text="EL TICKETS"
-        android:textColor="#F8F8F8"
-        android:textStyle="bold" />
+        android:id="@+id/textView3"
+        android:layout_width="129dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:text="My tickets"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="#FBFBFB"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="325dp"
+        android:layout_height="368dp"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/profile_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="260dp"
+            android:layout_height="185dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="35dp"
+            android:src="@drawable/festival_ticket" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

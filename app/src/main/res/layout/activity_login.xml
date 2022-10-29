@@ -52,7 +52,7 @@
             android:background="@drawable/recuadro_login">
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/Email_Register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -62,14 +62,14 @@
                 android:layout_marginTop="42dp"
                 android:layout_marginEnd="26dp"
                 android:ems="10"
+                android:hint="Correo electronico"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
-                android:hint="Correo electronico"
 
                 android:textColorHint="@color/white" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName5"
+                android:id="@+id/Password_Register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -79,8 +79,8 @@
                 android:layout_marginTop="118dp"
                 android:layout_marginEnd="24dp"
                 android:ems="10"
-                android:inputType="textPassword"
                 android:hint="Contraseña"
+                android:inputType="textPassword"
 
                 android:textColorHint="@color/white" />
         </RelativeLayout>

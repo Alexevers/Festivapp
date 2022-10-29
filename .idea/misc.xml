@@ -5,12 +5,13 @@
       <map>
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/drawable-anydpi/ic_ajustes.xml" value="0.1885" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/drawable/login_box.xml" value="0.1885" />
+        <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/drawable/profile_box.xml" value="0.1885" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/drawable/recuadro_login.xml" value="0.1885" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
-        <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/activity_register.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/fragment_home.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Alejandro/Desktop/Festivapp/app/src/main/res/layout/fragment_settings.xml" value="0.358695652173913" />

@@ -43,7 +43,7 @@ class MainScreen : AppCompatActivity() {
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction() //se usa para poder moverte entre los fragmentes
-        fragmentTransaction.replace(R.id.frame_layout, fragment) //aqui supuetamente va a buscar objetos fragmente con que tengan un constraint layout
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
 

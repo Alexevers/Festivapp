@@ -8,5 +8,16 @@
     tools:context=".Home">
 
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="409dp"
+        android:layout_height="60dp"
+        android:background="#221C1C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemBackground="#ffffffff"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

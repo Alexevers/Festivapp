@@ -1,5 +1,13 @@
 package com.alejandro.festivapp
 
+/**
+ * Esta es la clase para la pantalla del Login
+ * En este archivo se exponen todas las funcionalidades de dicha pantalla
+ *
+ * Funcionalidades:
+ * - Loguin del usuario en la aplicacion. Pantalla Login -> Pantalla principal de la aplicacion
+ * - Si no existe cuenta de usuario, click en el boton registrar. Pantalla Logiin -> Pantalla Register
+ */
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

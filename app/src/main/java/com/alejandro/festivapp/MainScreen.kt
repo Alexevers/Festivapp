@@ -1,5 +1,12 @@
 package com.alejandro.festivapp
 
+/**
+ * Esta es la clase para la pantalla principal de la aplicación
+ * En este archivo se exponen todas las funcionalidades de dicha pantalla
+ *
+ * Funcionalidades:
+ * - Cambiar entre fragments
+ */
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,7 +27,7 @@ class MainScreen : AppCompatActivity() {
         replaceFragment(Home())
 
 
-
+        /** Aquí se establecen las condiciones por las cuales es posible cambiar entre fragments**/
         binding.MainMenu.setOnItemSelectedListener {
 
             when(it.itemId){
@@ -39,6 +46,7 @@ class MainScreen : AppCompatActivity() {
 
     }
 
+    /**Metodo principal para poder moverte entre los fragments**/
     private fun replaceFragment(fragment : Fragment){
 
         val fragmentManager = supportFragmentManager

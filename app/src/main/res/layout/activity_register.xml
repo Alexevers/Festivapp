@@ -8,6 +8,7 @@
     android:background="@drawable/login"
     tools:context=".Register">
 
+    <!--Se usa relativeLayout para poder ajustar el tamaño de la imagen de manera automatica-->
     <RelativeLayout
         android:id="@+id/rlHeader"
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
             android:src="@drawable/logo" />
     </RelativeLayout>
 
+    <!--Se usa relativeLayout para poder ajustar el box que va a contener el segundo box con los campos de texto-->
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="290dp"
@@ -32,6 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rlHeader">
 
+        <!--Box con todos los vcampos de texto-->
         <RelativeLayout
             android:layout_width="250dp"
             android:layout_height="228dp"
@@ -58,7 +61,8 @@
                 android:ems="10"
                 android:hint="Nombre"
                 android:inputType="textPersonName"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/Surname_Register"
@@ -73,7 +77,8 @@
                 android:ems="10"
                 android:hint="Apellidos"
                 android:inputType="textPersonName"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/Email_Register"
@@ -88,7 +93,7 @@
                 android:ems="10"
                 android:hint="Correo electronico"
                 android:inputType="textPersonName"
-
+                android:textColor="@color/white"
 
                 android:textColorHint="@color/white" />
 
@@ -105,9 +110,10 @@
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPersonName"
-
+                android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </RelativeLayout>
+
     </RelativeLayout>
 
     <Button

@@ -14,6 +14,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <!--Se usa relativeLayout para poder ajustar el tamaño de la imagen de manera automatica-->
     <RelativeLayout
         android:id="@+id/rlHeader"
         android:layout_width="match_parent"
@@ -29,6 +30,8 @@
             android:src="@drawable/logo" />
     </RelativeLayout>
 
+    <!--Se usa relativeLayout para poder ajustar el box que va a contener el segundo box con los campos de texto-->
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="290dp"
@@ -38,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rlHeader">
 
+        <!--Box con todos los vcampos de texto-->
         <RelativeLayout
             android:layout_width="250dp"
             android:layout_height="228dp"
@@ -81,6 +85,7 @@
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
+                android:textColor="@color/white"
 
                 android:textColorHint="@color/white" />
         </RelativeLayout>
@@ -93,13 +98,12 @@
         android:layout_height="48dp"
         android:layout_marginTop="124dp"
         android:text="Login"
-        android:textStyle="bold"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/textView"

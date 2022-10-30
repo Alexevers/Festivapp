@@ -7,17 +7,23 @@
     android:background="#322929"
     tools:context=".Profile">
 
-    <ImageView
-        android:id="@+id/Imagen_Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
+    <!--Se utiliza el RelativeLayout para poder ajustar el tamaño de imagen de manera automatica-->
+    <RelativeLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:layout_editor_absoluteX="0dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/alejandro" />
+    </RelativeLayout>
+
+    <!--TextView que aparece encima de la imagen-->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="129dp"
@@ -32,30 +38,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--TExtview para poner el email del usuario, su email va a ser su Id por lo que no es posible cambiarlo-->
     <TextView
         android:id="@+id/Email_Profile"
         android:layout_width="302dp"
         android:layout_height="31dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="212dp"
         android:text="alexandroillan@gmail.com"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Imagen_Profile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Se utiliza el relative layout para poder utilizar un drawable y así hacer un box que quede más ajustado y estable en la pantalla-->
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="302dp"
         android:layout_height="364dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/profile_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email_Profile" >
+        app:layout_constraintTop_toBottomOf="@+id/Email_Profile">
+
 
         <TextView
             android:id="@+id/textView5"
@@ -68,9 +77,9 @@
             android:layout_marginTop="38dp"
             android:layout_marginEnd="177dp"
             android:text="Nombre:"
-            android:textSize="16dp"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
@@ -105,6 +114,7 @@
             android:textSize="16dp"
             android:textStyle="bold" />
 
+        <!--editText o PlainText para poder modificar el campo de nombre del usuario-->
         <EditText
             android:id="@+id/Name_Profile"
             android:layout_width="146dp"
@@ -121,6 +131,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16dp" />
 
+        <!--editText o PlainText para poder modificar el campo de apellidos del usuario-->
         <EditText
             android:id="@+id/Surname_Profile"
             android:layout_width="109dp"
@@ -137,6 +148,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16dp" />
 
+        <!--editText o PlainText para poder modificar el campo de contraseña del usuario-->
         <EditText
             android:id="@+id/Password_Profile"
             android:layout_width="109dp"

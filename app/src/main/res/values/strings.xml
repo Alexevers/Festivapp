@@ -2,4 +2,10 @@
     <string name="app_name">Festivapp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_passwd">Introduce la Contraseña</string>
+    <string name="hint_email">Introduce tu Email</string>
+    <string name="txt_login">Iniciar Sesión</string>
+    <string name="description_Image">ImageView</string>
+    <string name="msg_no_passwd">Si no dispone de una contraseña, haga click en registrar</string>
+    <string name="btn_registrar">Registrar</string>
 </resources>

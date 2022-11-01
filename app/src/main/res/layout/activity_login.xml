@@ -26,8 +26,10 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/description_Image"
             android:padding="10dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            tools:ignore="ImageContrastCheck" />
     </RelativeLayout>
 
     <!--Se usa relativeLayout para poder ajustar el box que va a contener el segundo box con los campos de texto-->
@@ -56,7 +58,7 @@
             android:background="@drawable/recuadro_login">
 
             <EditText
-                android:id="@+id/Email_Register"
+                android:id="@+id/Email_Login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -66,14 +68,15 @@
                 android:layout_marginTop="42dp"
                 android:layout_marginEnd="26dp"
                 android:ems="10"
-                android:hint="Correo electronico"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
+                android:hint="@string/hint_email"
+                android:inputType="textWebEmailAddress"
+                android:minHeight="48dp"
 
+                android:textColor="@color/white"
                 android:textColorHint="@color/white" />
 
             <EditText
-                android:id="@+id/Password_Register"
+                android:id="@+id/Password_Login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -83,21 +86,23 @@
                 android:layout_marginTop="118dp"
                 android:layout_marginEnd="24dp"
                 android:ems="10"
-                android:hint="Contraseña"
+                android:hint="@string/hint_passwd"
                 android:inputType="textPassword"
-                android:textColor="@color/white"
+                android:minHeight="48dp"
 
-                android:textColorHint="@color/white" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:importantForAutofill="no" />
         </RelativeLayout>
     </RelativeLayout>
 
     <Button
         android:id="@+id/Login"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="122dp"
-        android:layout_height="48dp"
+        android:layout_width="156dp"
+        android:layout_height="53dp"
         android:layout_marginTop="124dp"
-        android:text="Login"
+        android:text="@string/txt_login"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +117,7 @@
         android:layout_marginTop="8dp"
         android:background="#86F1EEEE"
         android:backgroundTint="#F3EBEB"
-        android:text="Si no dispone de una contraseña, haga click en registrar"
+        android:text="@string/msg_no_passwd"
         android:textAlignment="center"
         android:textColor="#1C1A1A"
         android:textSize="18sp"
@@ -126,11 +131,11 @@
         android:layout_width="122dp"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
-        android:text="Registrar"
+        android:text="@string/btn_registrar"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login"
     tools:context=".Register">
-
+    <!--TODO añadir botón regreso a inicio de sesion-->
     <!--Se usa relativeLayout para poder ajustar el tamaño de la imagen de manera automatica-->
     <RelativeLayout
         android:id="@+id/rlHeader"
@@ -61,8 +61,9 @@
                 android:ems="10"
                 android:hint="Nombre"
                 android:inputType="textPersonName"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"/>
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/Surname_Register"
@@ -77,8 +78,9 @@
                 android:ems="10"
                 android:hint="Apellidos"
                 android:inputType="textPersonName"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"/>
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/Email_Register"
@@ -110,6 +112,7 @@
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPersonName"
+                android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
         </RelativeLayout>

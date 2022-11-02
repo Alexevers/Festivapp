@@ -4,6 +4,7 @@
     package="com.alejandro.festivapp">
 
     <application
+        android:name="com.alejandro.roomDB.UserApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

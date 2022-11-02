@@ -1,23 +1,24 @@
 package com.alejandro.classes
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+
 
 /***
  * Clase que define un usuario del sistema
  */
+@Entity(tableName = "tabla_usuario", indices = [Index(value = ["email"], unique = true)])
+data class User(
+    @PrimaryKey(autoGenerate = true) val id: Int,
+    @ColumnInfo(name = "nombre") val nombre: String,
+    @ColumnInfo(name = "apellidos") val apellidos: String,
+    @ColumnInfo(name = "passwd") val passwd: String,
+    @ColumnInfo(name = "email") val email: String,
 
-class User(s: String, s1: String) {
+) {
 
-    var email : String = s
-     private set
-    private var passwd : String = s1
-
-    fun changeEmail(email: String){
-        this.email= email
-    }
-
-    fun changePasswd(passwd: String,newPasswd: String){
-        if(this.passwd.equals(passwd)) this.passwd=newPasswd
-    }
 
     fun validatePasswd(passwd: String):Boolean{
         return this.passwd.equals(passwd)

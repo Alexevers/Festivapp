@@ -8,48 +8,53 @@ package com.alejandro.festivapp
  * - Loguin del usuario en la aplicacion. Pantalla Login -> Pantalla principal de la aplicacion
  * - Si no existe cuenta de usuario, click en el boton registrar. Pantalla Logiin -> Pantalla Register
  */
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.alejandro.classes.User
-import org.w3c.dom.Text
+import com.alejandro.roomDB.*
+import java.util.regex.Pattern
 
 class Login : AppCompatActivity() {
+
+    val PASSWD_PATTERN: Pattern = Pattern.compile(
+            "^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                //"(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                //"(?=\\S+$)" +           //no white spaces
+                //".{4,}" +               //at least 8 characters
+                "$"
+    )
+
+    /*private val loginViewModel: UserViewModel by viewModels {
+        UserViewModelFactory((application as UserApplication).repository)
+    }
+    */
+    private val loginViewModel: LoginViewModel by viewModels()
+    var listaUsers: List<User> = emptyList()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         //vamos a crear un usuario de prueba para la funcionalidad del login
-        val user = User("dani\u0040gmail.com","1234")
+        var user = User(0,"Dani","Rosique","1234","dani@gmail.com")
+
 
         /**Boton del Login**/
         val btnLogin: Button = findViewById(R.id.Login)
         btnLogin.setOnClickListener {
-            val txtEmail: TextView = findViewById(R.id.Email_Login)
-            val txtPasswd: TextView = findViewById(R.id.Password_Login)
-            txtEmail.background = ResourcesCompat.getDrawable(resources, R.drawable.sin_borde, null)
-            txtPasswd.background = ResourcesCompat.getDrawable(resources, R.drawable.sin_borde, null)
-
-            if(!user.email.equals(txtEmail.text.toString())) {
-                Toast.makeText(this, "COMPRUEBA EL EMAIL", Toast.LENGTH_SHORT).show()
-                txtEmail.background = ResourcesCompat.getDrawable(resources, R.drawable.borde_rojo, null)
-                return@setOnClickListener
-            }
-
-            if(!user.validatePasswd(txtPasswd.text.toString())) {
-                Toast.makeText(this, "COMPRUEBA LA CONTRASEÑA", Toast.LENGTH_SHORT).show()
-                txtPasswd.background = ResourcesCompat.getDrawable(resources, R.drawable.borde_rojo, null)
-                return@setOnClickListener
-            }
-
-            Toast.makeText(this,"INICIO DE SESION CORRECTO", Toast.LENGTH_SHORT).show()
-            val intent: Intent = Intent(this, MainScreen::class.java)
-
-            startActivity(intent)
+           Login()
         }
         /**Boton de Register**/
         val btnRegister: Button = findViewById(R.id.btnRegistrar)

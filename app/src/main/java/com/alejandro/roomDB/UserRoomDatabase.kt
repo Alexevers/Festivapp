@@ -27,7 +27,7 @@ public abstract class UserRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     UserRoomDatabase::class.java,
                     "user_database"
-                ).addCallback(UserDatabaseCallback(scope)).build()
+                ).addCallback(UserDatabaseCallback(scope)).allowMainThreadQueries().build()
                 INSTANCE = instance
 
                 instance

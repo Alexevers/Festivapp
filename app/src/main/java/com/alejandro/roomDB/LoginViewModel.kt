@@ -2,6 +2,7 @@ package com.alejandro.roomDB
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.alejandro.Status.Recurso
 import com.alejandro.classes.User
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 /**
  * ViewModel que controla el login de los usuarios
  */
-class LoginViewModel  constructor(var usersUseCase: UserUseCase): ViewModel() {
+class LoginViewModel  constructor(var repository: UserRepository): ViewModel() {
     //Almacena el estado del login
     private val _GetUserLoginDataStatus = MutableLiveData<Recurso<User>>()
 
@@ -31,8 +32,8 @@ class LoginViewModel  constructor(var usersUseCase: UserUseCase): ViewModel() {
         viewModelScope.launch {
             _GetUserLoginDataStatus.postValue(Recurso.loading(null))
             try {
-                val data = usersUseCase.getUserLoginVerify(email,password)
-                _GetUserLoginDataStatus.postValue(Recurso.success(data, 0))
+                val data = repository.verifyLoginUser(email,password)
+                _GetUserLoginDataStatus.postValue(Recurso.success(data,1))
             } catch (exception: Exception) {
                 _GetUserLoginDataStatus.postValue(Recurso.error(null, exception.message!!))
             }
@@ -43,13 +44,21 @@ class LoginViewModel  constructor(var usersUseCase: UserUseCase): ViewModel() {
         viewModelScope.launch {
             _GetUserProfileDataStatus.postValue(Recurso.loading(null))
             try {
-                val data = usersUseCase.getUserData(id)
+                val data = repository.getUserDataDetails(id)
                 _GetUserProfileDataStatus.postValue(Recurso.success(data, 0))
             } catch (exception: Exception) {
                 _GetUserProfileDataStatus.postValue(Recurso.error(null, exception.message!!))
             }
         }
     }
-
+    class LoginViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return LoginViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+    }
 
 }

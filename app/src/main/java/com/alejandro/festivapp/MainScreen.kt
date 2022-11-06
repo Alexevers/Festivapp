@@ -9,6 +9,8 @@ package com.alejandro.festivapp
  */
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.alejandro.festivapp.databinding.ActivityLoginBinding
 import com.alejandro.festivapp.databinding.ActivityMainScreenBinding
@@ -25,7 +27,6 @@ class MainScreen : AppCompatActivity() {
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(Home())
-
 
         /** Aquí se establecen las condiciones por las cuales es posible cambiar entre fragments**/
         binding.MainMenu.setOnItemSelectedListener {

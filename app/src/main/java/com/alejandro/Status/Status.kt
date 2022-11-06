@@ -2,8 +2,8 @@ package com.alejandro.Status
 
 enum class Status {
 
-    SUCCESS,
+    LOADING,
     ERROR,
-    LOADING
+    SUCCESS
 
 }

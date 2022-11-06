@@ -17,13 +17,15 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import com.alejandro.classes.User
+import androidx.lifecycle.Observer
+import com.alejandro.Status.Status
+
 import com.alejandro.roomDB.*
-import java.util.regex.Pattern
+
 
 class Login : AppCompatActivity() {
-
-    val PASSWD_PATTERN: Pattern = Pattern.compile(
+/*
+     val PASSWD_PATTERN: Pattern = Pattern.compile(
             "^" +
                 "(?=.*[0-9])" +         //at least 1 digit
                 //"(?=.*[a-z])" +         //at least 1 lower case letter
@@ -34,32 +36,26 @@ class Login : AppCompatActivity() {
                 //".{4,}" +               //at least 8 characters
                 "$"
     )
+*/
 
-    /*private val loginViewModel: UserViewModel by viewModels {
-        UserViewModelFactory((application as UserApplication).repository)
+    private val loginViewModel: LoginViewModel by viewModels(){
+        LoginViewModel.LoginViewModelFactory((application as UserApplication).repository)
     }
-    */
-    private val loginViewModel: LoginViewModel by viewModels()
-    var listaUsers: List<User> = emptyList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        //vamos a crear un usuario de prueba para la funcionalidad del login
-        var user = User(0,"Dani","Rosique","1234","dani@gmail.com")
-
-
         /**Boton del Login**/
         val btnLogin: Button = findViewById(R.id.Login)
         btnLogin.setOnClickListener {
-           Login()
+          btnLoginFunct()
         }
         /**Boton de Register**/
         val btnRegister: Button = findViewById(R.id.btnRegistrar)
         btnRegister.setOnClickListener {
-            val intent: Intent = Intent(this, Register::class.java)
+            val intent = Intent(this, Register::class.java)
             startActivity(intent)
 
         }

@@ -1,6 +1,8 @@
 package com.alejandro.roomDB
 
 import com.alejandro.classes.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
 interface UserRepository {
     fun addUser(user: User):Long
@@ -12,30 +14,30 @@ interface UserRepository {
 }
 
 class UserRepositoryImpl constructor(
-    private  var usersDao: UserDao,
+    private var userDao: UserDao
 ):UserRepository{
 
     override fun addUser(user:User): Long {
-        return usersDao.insert(user)
+        return userDao.insert(user)
     }
 
     override fun addUserList(users:List<User>): List<Long> {
-        return usersDao.insertUserAll(users)
+        return userDao.insertUserAll(users)
     }
 
     override fun deleteUsers():Int {
-        return usersDao.deleteAll()
+        return userDao.deleteAll()
     }
 
     override fun verifyEmail(email: String):List<User>{
-        return usersDao.verifyEmail(email)
+        return userDao.verifyEmail(email)
     }
     override fun verifyLoginUser(email:String,password:String): User {
-        return usersDao.verifyLogin(email = email, passwd = password )
+        return userDao.verifyLogin(email = email, passwd = password )
     }
 
     override fun getUserDataDetails(id:Long): User {
-        return usersDao.getUserById(id)
+        return userDao.getUserById(id)
     }
 
 

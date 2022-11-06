@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 /**
  * ViewModel que controla el registro de los usuarios
  */
-class RegistroViewModel constructor(private var usersUseCase: UserUseCase) : ViewModel() {
+class RegistroViewModel constructor(private var repository: UserRepository) : ViewModel() {
 
     //Guarda el estado del registro de un unico usuario
     private val _insertUsersDataStatus = MutableLiveData<Recurso<Long>>()
@@ -23,7 +23,7 @@ class RegistroViewModel constructor(private var usersUseCase: UserUseCase) : Vie
         viewModelScope.launch {
             _insertUsersDataStatus.postValue(Recurso.loading(null))
             try {
-                val data = usersUseCase.addUser(user)
+                val data = repository.addUser(user)
                 _insertUsersDataStatus.postValue(Recurso.success(data, 0))
             } catch (exception: Exception) {
                 _insertUsersDataStatus.postValue(Recurso.error(null, exception.message!!))
@@ -37,7 +37,7 @@ class RegistroViewModel constructor(private var usersUseCase: UserUseCase) : Vie
         viewModelScope.launch {
             _insertUsersDataStatusList.postValue(Recurso.loading(null))
             try {
-                val data = usersUseCase.addUserList(users)
+                val data = repository.addUserList(users)
                 _insertUsersDataStatusList.postValue(Recurso.success(data, 0))
             } catch (exception: Exception) {
                 _insertUsersDataStatusList.postValue(Recurso.error(null, exception.message!!))
@@ -45,5 +45,14 @@ class RegistroViewModel constructor(private var usersUseCase: UserUseCase) : Vie
         }
     }
 
+    class RefistroViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(RegistroViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return RegistroViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+    }
 
 }

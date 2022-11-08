@@ -1,7 +1,7 @@
 package com.alejandro.roomDB
 
 import androidx.lifecycle.*
-import com.alejandro.Status.Recurso
+import com.alejandro.status.Recurso
 import com.alejandro.classes.User
 import kotlinx.coroutines.launch
 
@@ -23,7 +23,14 @@ class RegistroViewModel constructor(private var repository: UserRepository) : Vi
         viewModelScope.launch {
             _insertUsersDataStatus.postValue(Recurso.loading(null))
             try {
-                val data = repository.addUser(user)
+                var noEmail = repository.verifyEmail(user.email)
+
+                if(!noEmail.isNullOrEmpty()){
+                    _insertUsersDataStatus.postValue(Recurso.error(null,"Email Ya Existe"))
+                    return@launch
+                }
+
+                var data = repository.addUser(user)
                 _insertUsersDataStatus.postValue(Recurso.success(data, 0))
             } catch (exception: Exception) {
                 _insertUsersDataStatus.postValue(Recurso.error(null, exception.message!!))
@@ -31,7 +38,7 @@ class RegistroViewModel constructor(private var repository: UserRepository) : Vi
         }
     }
 
-//for inserting list of users
+//for inserting list of users TODO = USARLO para poblar la app
 
     fun insertUserDataList(users: List<User>) {
         viewModelScope.launch {

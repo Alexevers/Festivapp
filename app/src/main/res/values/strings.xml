@@ -8,4 +8,5 @@
     <string name="description_Image">ImageView</string>
     <string name="msg_no_passwd">Si no dispone de una contraseña, haga click en registrar</string>
     <string name="btn_registrar">Registrar</string>
+    <string name="BOTONTEST">TEST</string>
 </resources>

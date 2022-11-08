@@ -16,12 +16,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
-import com.alejandro.Status.Status
+import com.alejandro.status.Status
 import com.alejandro.classes.User
-import com.alejandro.roomDB.LoginViewModel
 import com.alejandro.roomDB.RegistroViewModel
 import com.alejandro.roomDB.UserApplication
-import kotlinx.coroutines.runBlocking
 
 class Register : AppCompatActivity() {
 
@@ -45,21 +43,10 @@ class Register : AppCompatActivity() {
     fun btnRegistrarFunct(){
         val txtEmail: TextView = findViewById(R.id.Email_Register)
         txtEmail.background = ResourcesCompat.getDrawable(resources, R.drawable.sin_borde, null)
-        val resultEmail=validateEmail(txtEmail)
-        if(!resultEmail.equals("OK")){
-            Toast.makeText(this, resultEmail, Toast.LENGTH_SHORT).show()
-            txtEmail.background = ResourcesCompat.getDrawable(resources, R.drawable.borde_rojo, null)
-            return
-        }
-
         val txtPasswd: TextView = findViewById(R.id.Password_Register)
         txtPasswd.background = ResourcesCompat.getDrawable(resources, R.drawable.sin_borde, null)
-        val resultPasswd = validatePasswd(txtPasswd)
-        if(!resultPasswd.equals("OK")){
-            Toast.makeText(this, resultPasswd, Toast.LENGTH_SHORT).show()
-            txtPasswd.background = ResourcesCompat.getDrawable(resources, R.drawable.borde_rojo, null)
-            return
-        }
+
+        if (validateData(txtEmail, txtPasswd)) return
 
         try {
             var user = User(0,"Dani","Rosique",txtPasswd.text.toString(),txtEmail.text.toString())
@@ -81,16 +68,15 @@ class Register : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                            Toast.makeText(this, "REGISTRO CORRECTO", Toast.LENGTH_SHORT)
-                                .show()
-                            val intent: Intent = Intent(this, MainScreen::class.java)
+                            Toast.makeText(this, "REGISTRO CORRECTO", Toast.LENGTH_SHORT).show()
+                            val intent: Intent = Intent(this, Login::class.java)
 
                             startActivity(intent)
                             finish()
                         }
 
                     Status.ERROR -> {
-                        //debugPrintln("it.message = ${it.message}")
+
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
 
@@ -103,6 +89,27 @@ class Register : AppCompatActivity() {
         {
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun validateData(
+        txtEmail: TextView,
+        txtPasswd: TextView
+    ): Boolean {
+        val resultEmail = validateEmail(txtEmail)
+        if (!resultEmail.equals("OK")) {
+            Toast.makeText(this, resultEmail, Toast.LENGTH_SHORT).show()
+            txtEmail.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.borde_rojo, null)
+            return true
+        }
+        val resultPasswd = validatePasswd(txtPasswd)
+        if (!resultPasswd.equals("OK")) {
+            Toast.makeText(this, resultPasswd, Toast.LENGTH_SHORT).show()
+            txtPasswd.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.borde_rojo, null)
+            return true
+        }
+        return false
     }
 
     private fun validatePasswd(txtPasswd: TextView): String {

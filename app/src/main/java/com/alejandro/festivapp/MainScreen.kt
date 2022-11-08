@@ -24,6 +24,7 @@ class MainScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sp = getSharedPreferences("Login", MODE_PRIVATE)
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(Home())

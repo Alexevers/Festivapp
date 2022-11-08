@@ -12,7 +12,7 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtWelcome"
         android:layout_width="259dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"

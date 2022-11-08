@@ -30,6 +30,20 @@
             android:padding="10dp"
             android:src="@drawable/logo"
             tools:ignore="ImageContrastCheck" />
+
+        <Button
+            android:id="@+id/tstBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="317dp"
+            android:background="#00FFFFFF"
+            android:text="@string/BOTONTEST"
+            android:visibility="visible"
+            app:iconTint="#00FFFFFF"
+            app:strokeColor="#00FFFFFF" />
     </RelativeLayout>
 
     <!--Se usa relativeLayout para poder ajustar el box que va a contener el segundo box con los campos de texto-->
@@ -111,7 +125,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtEmail"
         android:layout_width="271dp"
         android:layout_height="56dp"
         android:layout_marginTop="8dp"
@@ -137,5 +151,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

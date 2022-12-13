@@ -66,8 +66,6 @@ class Register : AppCompatActivity() {
         val btnRegistrar: Button = findViewById(R.id.btnRegistrar_Register)
         btnRegistrar.setOnClickListener {
             btnRegistrarFunct()
-
-
         }
     }
 
@@ -76,11 +74,17 @@ class Register : AppCompatActivity() {
         txtEmail.background = ResourcesCompat.getDrawable(resources, R.drawable.sin_borde, null)
         val txtPasswd: TextView = findViewById(R.id.Password_Register)
         txtPasswd.background = ResourcesCompat.getDrawable(resources, R.drawable.sin_borde, null)
+        val txtNombre: TextView = findViewById(R.id.Name_Register)
+        txtNombre.background = ResourcesCompat.getDrawable(resources,R.drawable.sin_borde,null)
+        val txtApellidos: TextView = findViewById(R.id.Surname_Register)
 
-        if (validateData(txtEmail, txtPasswd)) return
+        //Se validan todos los campos, si alguno es incorrecto, no continúa
+        //Se usa para evitar fallos al añadir campos vacíos
+        if (!validarRegistro(txtEmail, txtPasswd,txtNombre,txtApellidos)) return
 
         try {
-            var user = User(0,"Dani","Rosique",txtPasswd.text.toString(),txtEmail.text.toString())
+            //introduce los datos del usuario
+            val user = User(0,txtNombre.text.toString(),txtApellidos.text.toString(),txtPasswd.text.toString(),txtEmail.text.toString())
             registroViewModel.insertUserData(user)
             //comprueba el resultado usando el observer declarado anteriormente
             registroViewModel.insertUsersDataStatus.observe(this, observer)

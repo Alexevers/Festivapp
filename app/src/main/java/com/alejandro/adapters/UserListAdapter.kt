@@ -1,4 +1,4 @@
-package com.alejandro.festivapp
+package com.alejandro.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alejandro.classes.User
+import com.alejandro.festivapp.R
 
 class UserListAdapter : ListAdapter<User, UserListAdapter.UserViewHolder>(UsersComparator()) {
 
@@ -17,13 +18,13 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserViewHolder>(UsersC
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.email,current.nombre,current.apellidos,current.id)
+        holder.bind(current.email,current.nombre,current.apellidos,current.id_user)
     }
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val emailItemView: TextView = itemView.findViewById(R.id.txtEmail)
         private val nombreItemView: TextView = itemView.findViewById(R.id.txtNombre)
-        private val apellidosItemView: TextView = itemView.findViewById(R.id.txtApellidos)
+        private val apellidosItemView: TextView = itemView.findViewById(R.id.txtFestName)
         private val idItemView: TextView = itemView.findViewById(R.id.txtIdUser)
         fun bind(email: String?,nombre: String?, apellidos: String?, id: Int?) {
             emailItemView.text = email
@@ -35,7 +36,7 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.UserViewHolder>(UsersC
         companion object {
             fun create(parent: ViewGroup): UserViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recycleviewusers, parent, false)
+                    .inflate(R.layout.recyclerviewusers, parent, false)
                 return UserViewHolder(view)
             }
         }

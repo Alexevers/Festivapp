@@ -6,9 +6,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alejandro.classes.User
-import com.alejandro.roomDB.LoginViewModel
-import com.alejandro.roomDB.UserApplication
+import com.alejandro.adapters.UserListAdapter
+import com.alejandro.funcUsuario.LoginViewModel
+import com.alejandro.roomDB.dbApplication
 
 /**
  * Actividad que permite mostrar todos los usuarios guardados en la base de datos
@@ -16,14 +16,14 @@ import com.alejandro.roomDB.UserApplication
 class verUsuarios : AppCompatActivity() {
 
     private val loginViewModel: LoginViewModel by viewModels(){
-        LoginViewModel.LoginViewModelFactory((application as UserApplication).repository)
+        LoginViewModel.LoginViewModelFactory((application as dbApplication).userRepository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_usuarios)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerviewUsers)
         val adapter = UserListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -31,7 +31,8 @@ class verUsuarios : AppCompatActivity() {
         loginViewModel.getAllUsersStatus()
             loginViewModel.getAllUsersStatus.observe(this, Observer { users ->
             // Update the cached copy of the words in the adapter.
-            users?.let { adapter.submitList(it) }
+            users?.let {
+                adapter.submitList(it) }
         })
     }
 }

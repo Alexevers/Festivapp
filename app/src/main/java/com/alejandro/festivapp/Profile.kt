@@ -5,9 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import com.alejandro.classes.User
+import com.alejandro.funcUsuario.LoginViewModel
+import com.alejandro.roomDB.dbApplication
+import com.alejandro.status.Status
+import org.w3c.dom.Text
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +32,13 @@ class Profile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+
+    private val loginViewModel: LoginViewModel by viewModels{
+        LoginViewModel.LoginViewModelFactory((requireActivity().application as dbApplication).userRepository)
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +63,67 @@ class Profile : Fragment() {
 
     private fun actualizarDatosUser(view: View) {
         try {
-            var emailProfile: TextView = view.findViewById(R.id.Email_Profile)
+            //TODO Actualizar todos los datos del usuario
+            val emailProfile: TextView = view.findViewById(R.id.Email_Profile)
+            val btnProfile: Button = view.findViewById(R.id.GuardarCambios_Profile)
+            val nombreProfile: TextView =view.findViewById(R.id.Name_Profile)
+            val apellidosProfile: TextView =view.findViewById(R.id.Surname_Profile)
+            val contraseñaProfile: TextView = view.findViewById(R.id.Password_Profile)
             val sp =  activity?.getSharedPreferences("Login", AppCompatActivity.MODE_PRIVATE);
 
             emailProfile.text =  sp?.getString("Umail", "")
+            nombreProfile.text = sp?.getString("Uname","")
+            apellidosProfile.text = sp?.getString("Usurname","")
+            contraseñaProfile.text = sp?.getString("Upass","")
+            var id = sp?.getInt("Uid",0)
+            if(id==null){
+                id=0
+            }
+            btnProfile.setOnClickListener{
+
+                val newName = nombreProfile.text.toString()
+                val newSurname = apellidosProfile.text.toString()
+                val newPass = contraseñaProfile.text.toString()
+                val newEmail = emailProfile.text.toString()
+                val ed = sp?.edit()
+                //Añadimos todos los campos del usuario, para luego poder mostrarlos TODO = Guardar el usuario entero
+
+                ed?.putString("Usurname",newSurname)
+                ed?.putString("Umail", newEmail)
+                ed?.putString("Uname",newName)
+                ed?.putString("Upass", newPass)
+                ed?.apply()
+
+
+                var newUser : User = User(id,
+                    newName,
+                    newSurname,
+                    newPass,
+                    newEmail
+                )
+
+
+
+
+                loginViewModel.getUpdateUserStatus(newUser)
+
+                loginViewModel.getUpdateUserStatus.observe(requireActivity(),{
+                    recurso->
+                    recurso?.let{
+                        when(it.status){
+                            Status.SUCCESS ->{
+                                Toast.makeText(requireActivity(), "DATOS ACTUALIZADOS", Toast.LENGTH_SHORT).show()
+                            }
+                            Status.ERROR -> {
+                                Toast.makeText(requireActivity(), it.message, Toast.LENGTH_SHORT).show()
+                            }
+                            else -> {
+                                Toast.makeText(requireActivity(), it.message, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                })
+            }
         } catch (e: Exception) {
             Toast.makeText(this.activity, "TODO CORRECTO", Toast.LENGTH_SHORT).show()
         }

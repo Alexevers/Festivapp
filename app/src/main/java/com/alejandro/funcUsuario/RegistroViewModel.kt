@@ -1,8 +1,9 @@
-package com.alejandro.roomDB
+package com.alejandro.funcUsuario
 
 import androidx.lifecycle.*
 import com.alejandro.status.Recurso
 import com.alejandro.classes.User
+import com.alejandro.roomDB.UserRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -23,15 +24,15 @@ class RegistroViewModel constructor(private var repository: UserRepository) : Vi
         viewModelScope.launch {
             _insertUsersDataStatus.postValue(Recurso.loading(null))
             try {
-                var noEmail = repository.verifyEmail(user.email)
-
-                if(!noEmail.isNullOrEmpty()){
-                    _insertUsersDataStatus.postValue(Recurso.error(null,"Email Ya Existe"))
+                //comprueba si hay un email que sea igual
+                val noEmail = repository.verifyEmail(user.email)
+                //verify email te devuelve los datos e un usuario con el mismo email
+                if(noEmail.isNullOrEmpty()){ //si no existe un usuario, lo introduce en la bd
+                    val data = repository.addUser(user)
+                    _insertUsersDataStatus.postValue(Recurso.success(data, 0))
                     return@launch
                 }
-
-                var data = repository.addUser(user)
-                _insertUsersDataStatus.postValue(Recurso.success(data, 0))
+                _insertUsersDataStatus.postValue(Recurso.error(null,"Email Ya Existe"))
             } catch (exception: Exception) {
                 _insertUsersDataStatus.postValue(Recurso.error(null, exception.message!!))
             }

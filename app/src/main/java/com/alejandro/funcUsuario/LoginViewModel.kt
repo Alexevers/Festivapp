@@ -1,8 +1,9 @@
-package com.alejandro.roomDB
+package com.alejandro.funcUsuario
 
 import androidx.lifecycle.*
 import com.alejandro.status.Recurso
 import com.alejandro.classes.User
+import com.alejandro.roomDB.UserRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -24,9 +25,22 @@ class LoginViewModel  constructor(var repository: UserRepository): ViewModel() {
 
     val getUserProfileDataStatus: MutableLiveData<Recurso<User>> = _GetUserProfileDataStatus
 
+    private val _GetUpdateUserStatus = MutableLiveData<Recurso<Int>>()
 
+    val getUpdateUserStatus: MutableLiveData<Recurso<Int>> = _GetUpdateUserStatus
 
-
+     fun getUpdateUserStatus(user: User){
+         viewModelScope.async {
+             //No nos interesa el tipo de Recurso loading, puesto que no es necesario esperar a que conecte
+             // _GetUserLoginDataStatus.postValue(Recurso.loading(null))
+             try {
+                 val data = repository.updateUser(user)
+                 _GetUpdateUserStatus.postValue(Recurso.success(data,1))
+             } catch (exception: Exception) {
+                 _GetUpdateUserStatus.postValue(Recurso.error(null, exception.message!!))
+             }
+         }
+     }
     //private val _getNetworkDataStatus = MutableLiveData<Recurso<NetworkResponse>>()
 
     //val getNetworkDataStatus: MutableLiveData<Resource<NetworkResponse>> = _getNetworkDataStatus

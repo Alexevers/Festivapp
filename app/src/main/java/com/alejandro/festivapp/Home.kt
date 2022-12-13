@@ -1,13 +1,24 @@
 package com.alejandro.festivapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import android.widget.TextView
 import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.alejandro.adapters.FestivalListAdapter
+import com.alejandro.adapters.UserListAdapter
+import com.alejandro.funcFestival.FestivalViewModel
+import com.alejandro.roomDB.dbApplication
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +35,10 @@ class Home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    //ViewModel que va a cargar los datos de los festivales
+    val festivalViewModel: FestivalViewModel by activityViewModels(){
+        FestivalViewModel.FestivalViewModelFactory((requireActivity().application as dbApplication).festivalRepository)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,20 +59,49 @@ class Home : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         actualizarDatosUser(view)
+        checkIfFragmentAttached(view)
         return view
+    }
+
+    private fun checkIfFragmentAttached(view: View) {
+              if (isAdded && context != null) {
+                                val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerviewFestivals)
+                  val sp =  activity?.getSharedPreferences("Login", AppCompatActivity.MODE_PRIVATE)
+
+                  var id_user =  sp?.getInt("Uid",0)
+                  if(id_user == null)id_user=0
+                    
+                  val adapter = FestivalListAdapter(festivalViewModel,id_user,this)
+                                recyclerView.adapter = adapter
+                                recyclerView.layoutManager = LinearLayoutManager(view.context)
+
+                                festivalViewModel.getAllFestivalsStatus()
+//                                Toast.makeText(view.context, "Cargados los festivals", Toast.LENGTH_SHORT).show()
+                                festivalViewModel.getAllFestivalsStatus.observe(
+                                    requireActivity(),
+                                    Observer { festivals ->
+                                        // Update the cached copy of the words in the adapter.
+                                        festivals?.let {
+//                                        Toast.makeText(view.context, it[0].nombre, Toast.LENGTH_SHORT).show()
+                                        adapter.submitList(it) }
+                    })
+
+        }
     }
 
     private fun actualizarDatosUser(view: View) {
         try {
             var mensajeBienvenida: TextView = view.findViewById(R.id.txtWelcome)
-            val sp =  activity?.getSharedPreferences("Login", AppCompatActivity.MODE_PRIVATE);
+            val sp =  activity?.getSharedPreferences("Login", AppCompatActivity.MODE_PRIVATE)
 
             mensajeBienvenida.text = "Bienvenido " + sp?.getString("Uname","" ).toString()
 
         } catch (e: Exception) {
-            Toast.makeText(this.activity, "TODO CORRECTO", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.activity, e.message, Toast.LENGTH_LONG).show()
+            println(e.message)
         }
     }
+
 
 
     companion object {
@@ -79,4 +123,7 @@ class Home : Fragment() {
                 }
             }
     }
+
+
+
 }

@@ -7,40 +7,29 @@
     android:background="#322929"
     tools:context=".Tickets">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="129dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="24dp"
-        android:text="My tickets"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:textColor="#FBFBFB"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="325dp"
-        android:layout_height="368dp"
-        android:layout_marginTop="84dp"
-        android:background="@drawable/profile_box"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="129dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="24dp"
+            android:text="My tickets"
+            android:textAlignment="center"
+            android:textColor="#FBFBFB"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="260dp"
-            android:layout_height="185dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="35dp"
-            android:src="@drawable/festival_ticket" />
-    </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewTickets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            tools:listitem="@layout/recyclerviewtickets" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

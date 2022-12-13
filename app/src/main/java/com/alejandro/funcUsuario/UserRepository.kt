@@ -1,10 +1,7 @@
 package com.alejandro.roomDB
 
 import com.alejandro.classes.User
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
+import com.alejandro.funcUsuario.UserDao
 
 interface UserRepository {
     fun addUser(user: User):Long
@@ -14,11 +11,11 @@ interface UserRepository {
     fun getUserDataDetails(id:Long):User
     fun verifyEmail(email: String): List<User>
     fun allUsers(): List<User>
+    fun updateUser(user: User): Int
 }
 
 class UserRepositoryImpl constructor(
-    private var userDao: UserDao,
-    private var database: UserRoomDatabase
+    private var userDao: UserDao
 ):UserRepository{
 
     override fun addUser(user:User): Long {
@@ -47,7 +44,9 @@ class UserRepositoryImpl constructor(
         return userDao.getUserById(id)
     }
 
-
+    override fun updateUser(user: User): Int {
+        return userDao.update(user)
+    }
 
 
 }

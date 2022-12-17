@@ -9,4 +9,11 @@
     <string name="msg_no_passwd">Si no dispone de una contraseña, haga click en registrar</string>
     <string name="btn_registrar">Registrar</string>
     <string name="BOTONTEST">TEST</string>
+    <string name="boton_añadirTicket">Añadir Ticket</string>
+    <string name="boton_borrarTicket">Borrar Ticket</string>
+    <string name="text_Mi_Perfil">Mi Perfil</string>
+    <string name="txtnombre">Nombre:</string>
+    <string name="txtapellidos">Apellidos:</string>
+    <string name="txtcontraseña">Contraseña:</string>
+    <string name="boton_guardarCambios">Guardar Cambios</string>
 </resources>

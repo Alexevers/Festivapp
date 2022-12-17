@@ -29,7 +29,7 @@
         android:layout_width="129dp"
         android:layout_height="29dp"
         android:layout_marginTop="24dp"
-        android:text="My profile"
+        android:text="@string/text_Mi_Perfil"
         android:textSize="20dp"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
@@ -76,7 +76,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="38dp"
             android:layout_marginEnd="177dp"
-            android:text="Nombre:"
+            android:text="@string/txtnombre"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
@@ -92,7 +92,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="98dp"
             android:layout_marginEnd="177dp"
-            android:text="Apellidos:"
+            android:text="@string/txtapellidos"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
@@ -108,7 +108,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="158dp"
             android:layout_marginEnd="178dp"
-            android:text="Contraseña:"
+            android:text="@string/txtcontraseña"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
@@ -175,7 +175,7 @@
             android:layout_marginStart="78dp"
             android:layout_marginTop="255dp"
             android:layout_marginEnd="87dp"
-            android:text="Guardar Cambios" />
+            android:text="@string/boton_guardarCambios" />
 
     </RelativeLayout>
 

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+    android:background="@drawable/profile_box"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="20dp"
     >
     <LinearLayout
         android:id= "@+id/userLayout"
@@ -18,42 +24,60 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
+            android:padding="10dp"
             app:srcCompat="@drawable/festival_ticket" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:layout_width="313dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center">
 
 
         <TextView
             android:id="@+id/txtNameTicket"
             style="@style/user_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:background="@android:color/holo_orange_light"
+            android:layout_width="150dp"
+            android:layout_height="34dp"
 
-            android:text="NOMBRE" />
+            android:background="@drawable/recuadro_login"
+            android:fontFamily="@font/akronim_regular"
+
+            android:text="NOMBRE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txtFechaTicket"
             style="@style/user_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="32dp"
 
-            android:background="@android:color/holo_orange_light"
 
-            android:text="PRUEBA" />
+
+            android:background="@drawable/recuadro_login"
+            android:fontFamily="@font/akronim_regular"
+            android:text="PRUEBA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameTicket"
+             />
 
         <Button
             android:id="@+id/btnBorrarTicket"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Borrar Ticket" />
-    </LinearLayout>
+            android:layout_width="139dp"
+            android:layout_height="57dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:text="@string/boton_borrarTicket"
+            android:fontFamily="@font/akronim_regular"
+            android:background="@drawable/recuadro_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.333"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

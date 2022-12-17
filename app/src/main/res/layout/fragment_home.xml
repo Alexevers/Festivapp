@@ -16,6 +16,7 @@
         android:layout_width="259dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
         android:text="Bienvenido [Nombre del usuario]"
         android:textColor="#F8F8F8"
         android:textStyle="bold"

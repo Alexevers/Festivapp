@@ -7,21 +7,40 @@
     android:background="#322929"
     tools:context=".Tickets">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/stateProfile"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:background="@drawable/state_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="129dp"
             android:layout_height="29dp"
-            android:layout_marginTop="24dp"
-            android:text="My tickets"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="95dp"
+            android:text="@string/text_Mis_tickets"
+            android:fontFamily="@font/akronim_regular"
             android:textAlignment="center"
             android:textColor="#FBFBFB"
             android:textSize="20dp"
             android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewTickets"

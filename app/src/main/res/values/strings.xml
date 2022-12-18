@@ -12,8 +12,15 @@
     <string name="boton_añadirTicket">Añadir Ticket</string>
     <string name="boton_borrarTicket">Borrar Ticket</string>
     <string name="text_Mi_Perfil">Mi Perfil</string>
+    <string name="text_Ajustes">Ajustes</string>
+    <string name="text_Mis_tickets">Mis Tickets</string>
     <string name="txtnombre">Nombre:</string>
     <string name="txtapellidos">Apellidos:</string>
     <string name="txtcontraseña">Contraseña:</string>
     <string name="boton_guardarCambios">Guardar Cambios</string>
+    <string name="txtNightMode">Activar el modo noche</string>
+    <string name="txtLightMode">Activar el modo dia</string>
+    <string name="txtSecurityMode">Activar el modo seguro</string>
+    <string name="txtNotificationsMode">Activar las notificaciones</string>
+    <string name="txtInglesMode">Cambiar idioma a inglés</string>
 </resources>

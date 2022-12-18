@@ -9,6 +9,32 @@
 
     <!--Se utiliza el RelativeLayout para poder ajustar el tamaño de imagen de manera automatica-->
     <RelativeLayout
+        android:id="@+id/stateProfile"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:background="@drawable/state_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="129dp"
+            android:layout_height="29dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="95dp"
+            android:text="@string/text_Mi_Perfil"
+            android:fontFamily="@font/akronim_regular"
+            android:textAlignment="center"
+            android:textColor="#FBFBFB"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/Header"
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -24,19 +50,6 @@
     </RelativeLayout>
 
     <!--TextView que aparece encima de la imagen-->
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="129dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/text_Mi_Perfil"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:textColor="#FBFBFB"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!--TExtview para poner el email del usuario, su email va a ser su Id por lo que no es posible cambiarlo-->
     <TextView
@@ -45,6 +58,7 @@
         android:layout_height="31dp"
         android:layout_marginTop="212dp"
         android:text="alexandroillan@gmail.com"
+        android:fontFamily="@font/akronim_regular"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -77,6 +91,7 @@
             android:layout_marginTop="38dp"
             android:layout_marginEnd="177dp"
             android:text="@string/txtnombre"
+            android:fontFamily="@font/akronim_regular"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
@@ -93,6 +108,7 @@
             android:layout_marginTop="98dp"
             android:layout_marginEnd="177dp"
             android:text="@string/txtapellidos"
+            android:fontFamily="@font/akronim_regular"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
@@ -109,6 +125,7 @@
             android:layout_marginTop="158dp"
             android:layout_marginEnd="178dp"
             android:text="@string/txtcontraseña"
+            android:fontFamily="@font/akronim_regular"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
@@ -175,7 +192,8 @@
             android:layout_marginStart="78dp"
             android:layout_marginTop="255dp"
             android:layout_marginEnd="87dp"
-            android:text="@string/boton_guardarCambios" />
+            android:text="@string/boton_guardarCambios"
+            android:fontFamily="@font/akronim_regular"/>
 
     </RelativeLayout>
 

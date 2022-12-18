@@ -1,7 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#322929"
-    tools:context=".Settings"/>
+    tools:context=".Settings">
+
+
+    <RelativeLayout
+        android:id="@+id/stateProfile"
+        android:layout_width="304dp"
+        android:layout_height="50dp"
+        android:background="@drawable/state_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="129dp"
+            android:layout_height="29dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="95dp"
+            android:text="@string/text_Ajustes"
+            android:fontFamily="@font/akronim_regular"
+            android:textAlignment="center"
+            android:textColor="#FBFBFB"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="302dp"
+        android:layout_height="364dp"
+        android:layout_marginBottom="164dp"
+        android:background="@drawable/profile_box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewSun"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="245dp"
+            android:layout_marginBottom="302dp"
+            android:src="@drawable/moon" />
+
+
+        <Switch
+            android:id="@+id/switchNightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="37dp"
+            android:text="@string/txtNightMode"
+            android:fontFamily="@font/akronim_regular"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="244dp"
+            android:layout_marginBottom="243dp"
+            android:src="@drawable/luz"
+            />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="91dp"
+            android:layout_marginEnd="38dp"
+            android:text="@string/txtLightMode"
+            android:fontFamily="@font/akronim_regular"
+            android:textColor="#FFFFFF"/>
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="243dp"
+            android:src="@drawable/ic_baseline_security_24" />
+
+        <Switch
+            android:id="@+id/switchsecurity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="147dp"
+            android:layout_marginEnd="37dp"
+            android:text="@string/txtSecurityMode"
+            android:fontFamily="@font/akronim_regular"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imageViewRing"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="199dp"
+            android:layout_marginEnd="242dp"
+            android:src="@drawable/ic_baseline_notifications_active_24" />
+
+        <Switch
+            android:id="@+id/switchNotifications"
+            android:layout_width="171dp"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="198dp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/txtNotificationsMode"
+            android:fontFamily="@font/akronim_regular"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imageViewLanguage"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="267dp"
+            android:layout_marginEnd="240dp"
+            android:src="@drawable/lnaguage" />
+
+        <Switch
+            android:id="@+id/switchLanguage"
+            android:layout_width="171dp"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="269dp"
+            android:layout_marginEnd="41dp"
+            android:text="@string/txtInglesMode"
+            android:fontFamily="@font/akronim_regular"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
